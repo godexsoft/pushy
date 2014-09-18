@@ -1,4 +1,4 @@
-Pushy.Ninja - a scalable, standalone push server
+Pushy - a scalable, standalone push server
 
 SPECS:
 	Language: c++
@@ -15,7 +15,9 @@ FEATURES:
 	- highly scalable
 	- rest/json api
 	- supports apns and gcm with a unified api
-	- logstash json output logs for apns/gcm events (used for stats via kibana, see tutorial)
+	- logstash json output logs for apns/gcm events (used for stats via elasticsearh/kibana, see tutorial)
+	- automatic redelivery (configurable)
+	- tags attachable to push messages can be used for your campaign stats via elasticsearch
 
 LICENSE: 
-	TBD
+	MIT
