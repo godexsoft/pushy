@@ -1,0 +1,3 @@
+[submodule "lib/push_service"]
+	path = lib/push_service
+	url = https://github.com/godexsoft/push_service.git
