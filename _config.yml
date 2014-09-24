@@ -2,7 +2,7 @@
 title: Pushy
 email: godexsoft@gmail.com
 description: Pushy is a crossplatform, scalable and highly configurable push server with support for APNS and GCM.
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/pushy" # the subpath of your site, e.g. /blog/
 url: "http://godexsoft.github.io/pushy"
 github_username: godexsoft
 
