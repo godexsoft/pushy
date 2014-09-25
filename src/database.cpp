@@ -193,8 +193,8 @@ namespace database {
         auto apns_msgs = get_failed_messages(push_type_apns);
         auto gcm_msgs  = get_failed_messages(push_type_gcm);
         
-        auto it = res.insert(res.begin(), apns_msgs.begin(), apns_msgs.end());
-        res.insert(it, gcm_msgs.begin(), gcm_msgs.end());
+        res.insert(res.begin(), apns_msgs.begin(), apns_msgs.end());
+        res.insert(res.end(), gcm_msgs.begin(), gcm_msgs.end());
         
         return res;
     }
