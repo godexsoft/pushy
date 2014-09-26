@@ -1,13 +1,19 @@
 #!/bin/sh
 
 echo "[+] getting push_service dependency..."
-sh GET_PUSH_SERVICE.sh > /dev/null
+sh GET_PUSH_SERVICE.sh > /dev/null 2>&1
 echo "[+] done."
 
 echo "[+] performing cmake ."
 cmake .
-echo "[+] done."
-echo
-echo "--------------------------------------"
-echo "now just run make to compile pushy :-)"
-echo "--------------------------------------"
+
+if [ $? -eq 0 ]
+then
+	echo "--------------------------------------"
+	echo "now just run make to compile pushy :-)"
+	echo "--------------------------------------"
+else
+	echo "-----------------------------------"
+	echo "error.. check the message above :-(" 
+	echo "-----------------------------------"
+fi

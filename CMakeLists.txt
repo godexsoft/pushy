@@ -29,21 +29,21 @@ else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+# build local dependencies
+add_subdirectory(lib/push_service)
+add_subdirectory(lib/redis3m)
+
 # we require boost with some linked libraries
-find_package(Boost 1.53.0 COMPONENTS system log thread program_options date_time log_setup)
+find_package(Boost 1.54.0 REQUIRED COMPONENTS system log thread program_options date_time log_setup)
 
 # and of course ssl/crypto is required
 find_package(OpenSSL REQUIRED)
 
 # find hiredis
-find_package(hiredis)
+find_package(hiredis REQUIRED)
 
 set( BINARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/pc CACHE PATH
         "Single Directory for all Binaries")
-
-# build local dependencies
-add_subdirectory(lib/push_service)
-add_subdirectory(lib/redis3m)
 
 # all source files
 file(GLOB_RECURSE ALL_SRC src/*.cpp)
