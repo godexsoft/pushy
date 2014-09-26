@@ -47,16 +47,17 @@ If it didn't work at the configuration stage it means that you lack some librari
 or a C++11-compatible compiler. Make sure you have the following preinstalled on your system:
 
 - cmake (2.8 or newer)
-- [boost](http://boost.org) (1.53 or newer). required libraries from boost:
+- [boost](http://boost.org) (1.54 or newer). required libraries from boost:
   1. system
   2. log
   3. thread
   4. program_options
   5. date_time
 - [hiredis](https://github.com/redis/hiredis) (redis client library for C/C++)
+- openssl (libssl and libcrypto)
 
-> Note:
-The above libraries are expected to be installed system-wide. 
+> __Note:__
+The above libraries are expected to be installed system-wide. CMake will do its best to try and find them for you.
 
 ##Compiling##
 
