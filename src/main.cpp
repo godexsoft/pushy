@@ -8,6 +8,7 @@
 
 #include <push_service.hpp>
 #include <vector>
+#include <fstream>
 
 #include "logging.hpp"
 #include "api_service.hpp"
@@ -143,8 +144,16 @@ try
     
     if(vm.count("config"))
     {
-        po::store(po::parse_config_file<char>(config_path.c_str(), desc), vm);
-        po::notify(vm);
+        std::ifstream f(config_path.c_str());
+        if(f.good())
+        {
+            po::store(po::parse_config_file(f, desc, true), vm);
+            po::notify(vm);
+        }
+        else
+        {
+            throw std::runtime_error("specified configuration file does not exist or is not accessible.");
+        }
     }
     
     // initialize logger to files etc.
@@ -164,8 +173,9 @@ try
             throw std::runtime_error("apns.mode must be either 'sandbox' or 'production'");
         }
         
+        LOG_DEBUG << "configuring apns with " << apns_mode << " p12=" << apns_p12_cert_key;
         service.setup_apns(apns_mode, apns_p12_cert_key, apns_password, apns_poolsize);
-        LOG_DEBUG << "configure apns with " << apns_mode << " p12=" << apns_p12_cert_key;
+        LOG_DEBUG << "configuration of apns done";
     }
     
     // gcm
